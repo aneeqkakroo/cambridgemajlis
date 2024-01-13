@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Est. 1891, the Cambridge Majlis is a prestigious cultural and debating society that has hosted some of South Asia's greatest minds.">
+  <meta name="author" content="">
+  <link rel="shortcut icon" type="image/x-icon" href="img/logos/old-logo.ico" />
+    <title>Archives - The Cambridge Majlis</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni&display=swap" rel="stylesheet" type="text/css">
+    <style>
+        .lead { font-size: 1.5rem; font-weight: 300; }
+        .container { margin: 50px auto 0 auto; max-width: 960px; }
+        /*--====== Global Variables ======--*/
+        :root {
+            --bg-color: #e0e2fc;
+            --main-color: #d88721;
+            --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        /*--====== CSS Reset ======--*/
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Libre Bodoni', serif;
+            background-color: #fdf9ee;
+            color: #000000;
+            margin: 0;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+        ul {
+            list-style: none;
+        }
+        .overflow_hide {
+            overflow: hidden;
+        }
+        /*--====== Gallery Section ======--*/
+        #gallery {
+            padding-top: 0rem;
+            padding-bottom: 2rem;
+        }
+        .container {
+            margin: 20px auto 20px auto;
+            max-width: 960px;
+        }
+        h1 {
+            text-align: center;
+            padding-top: 0.5rem;
+            margin-bottom: 0px;
+            color: #a43725;
+        }
+        /* Filterable Gallery */
+        .gallery_tabs {
+            background-color: inherit;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            row-gap: 0.8rem;
+            padding: 0.8rem;
+            border-radius: 50px;
+            box-shadow: var(--box-shadow);
+        }
+        .gallery_tabs li {
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .gallery_tabs li.active,
+        .gallery_tabs li:hover {
+            background-color: var(--main-color);
+            color: #fff;
+        }
+        .gallery_wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+        @media (max-width: 768px) {
+            .gallery_wrapper {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+        }
+        .gallery_item {
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .gallery_item.show {
+            animation: fadeIn 0.4s ease-in;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .gallery_item.hide {
+            display: none;
+        }
+        .gallery_item img {
+            transition: transform 0.3s ease;
+        }
+        .gallery_item:hover img {
+            transform: scale(1.1);
+        }
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 995;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            overflow-x: hidden;
+            overflow-y: auto;
+            pointer-events: none;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s ease, opacity 0.3s ease;
+        }
+        .lightbox.open {
+            pointer-events: all;
+            visibility: visible;
+            opacity: 1;
+        }
+        .lightbox_wrapper {
+            display: grid;
+            place-items: center;
+            min-height: calc(100% - 3rem);
+            margin: 1.5rem;
+        }
+        @media (max-width: 575.98px) {
+            .lightbox_wrapper {
+                margin: 0.5rem;
+                min-height: calc(100% - 1rem);
+            }
+        }
+        .lightbox_content {
+            box-shadow: var(--box-shadow);
+            max-width: 700px;
+            width: 100%;
+            border-radius: 10px;
+            text-align: center;
+            overflow: hidden;
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+        .lightbox.open .lightbox_content {
+            transform: scale(1);
+        }
+        .lightbox_close {
+            position: absolute;
+            top: 3vh;
+            right: 3vw;
+            z-index: 999;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .lightbox_close span {
+            width: 100%;
+            height: 3px;
+            margin-top: -1.5px;
+            margin-bottom: -1.5px;
+            background-color: #ddd;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox_close:hover span {
+            opacity: 1;
+        }
+        .lightbox_close span:first-child {
+            transform: rotate(45deg);
+        }
+        .lightbox_close span:last-child {
+            transform: rotate(-45deg);
+        }
+        .lightbox_content .caption {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>The Cambridge Majlis Archives</h1>
+    </div>
+        <div style="text-align: center; color: #a13b22;">
+        <p>Return <a href="/">home</a>.</p>
+            <br>
+            <p>To access past meeting minutes, click <a href="/minutes">here</a>.</p>
+    </div>
+    <!--====== Gallery Section ======-->
+    <section id="gallery">
+        <div class="container">
+            <!-- Filterable Gallery -->
+            <ul class="gallery_tabs">
+                <li class="active" data-filter="all">All</li>
+                <li data-filter="1890s">1890s</li>
+                <li data-filter="1900s">1900s</li>
+                <li data-filter="1910s">1910s</li>
+                <li data-filter="1920s">1920s</li>
+                <li data-filter="1930s">1930s</li>
+                <li data-filter="1940s">1940s</li>
+                <li data-filter="1950s">1950s</li>
+                <li data-filter="2020s">2020s</li>
+            </ul>
+
+            <div class="gallery_wrapper">
+                <div class="gallery_item 2020s" data-caption="An invite for the Majlis Archival Exhibition held in the Trinity Wren Library, Cambridge in March 2023.">
+                    <img src="/digitizedarchives/2023exhibitioninvite.jpg" alt="img">
+                </div>
+
+                <div class="gallery_item 2020s" data-caption="The poster for the Majlis Archival Exhibition held in the Trinity Wren Library, Cambridge in March 2023.">
+                    <img src="/digitizedarchives/2023exhibitionposter.jpg" alt="img">
+                </div>
+
+                <div class="gallery_item 1940s" data-caption="U.S.C. Majlis and L.S.E. India Society Ball at the Dorothy Cafe, 5th June 1941.">
+                    <img src="/digitizedarchives/ball.jpg"
+                        alt="img">
+                </div>
+
+                <div class="gallery_item 1930s" data-caption="A letter to the Cambridge Majlis from The Congress of Peace and Friendship with The U.S.S.R., dated 9th April 1937.">
+                    <img src="/digitizedarchives/congress-peace-friendship-ussr.jpg"
+                        alt="img">
+                </div>
+
+                <div class="gallery_item 1940s" data-caption="Dance at the Dorothy Cafe, 17th February 1937.">
+                    <img src="/digitizedarchives/dance.jpg"
+                        alt="img">
+                </div>
+                
+                 <div class="gallery_item 1900s" data-caption="Letter to Frederick Howard Marsh (Master of Downing College) from Lord Morley (Secretary of State for India), 19th March 1909. Lord Morley wrote to the Master of Downing College in 1909 asking if he would assist the India Office’s attempts to limit the number of Indian Students at Cambridge. He proposed two “solutions” to “improve the situation that had arisen from the presence of Indian Students at Cambridge.” The first was the creation of a bureau to monitor which Indian students were given permission to attend Cambridge. The second was placing a limitation on the number of Indian students to be admitted by each college to one or two each year. He emphasises the importance of this measure to Marsh, saying that he would not “venture to press the matter upon [Marsh] in this way if the subject were not of real importance from the point of view of the Indian Government”.">
+                    <img src="/digitizedarchives/lord-morley-letter.jpg"
+                        alt="img">
+                </div>
+
+                                                <div class="gallery_item 1900s" data-caption="Letter to Lord Morley from Frederick Howard Marsh, 1st May 1909. Marsh responded to Morley, saying that he put the matter before the College’s Governing Body, but explained that Downing would not be making any changes to its admissions process. Downing had particularly strong links with the Indian subcontinent. Of the roughly ninety Indian students at the University in the early 1900s, over thirty were at Downing. Most Indian students at Downing came from the commercial elites of western India and Bengal, communities with strong ties to the British since the days of the East India Company. Marsh took a particularly strong stance against the India Office’s Measure. He objected to the limit, saying “if an Indian was expelled without sufficient reason from his College, [Downing] would take him in”. Later, the role of the India Office Bureau was restricted to the monitoring of Indian students in London, with a former member of the Indian Educational Service installed at Magdalene College to monitor and advise Cambridge students.">
+                    <img src="/digitizedarchives/howard-marsh-letter.jpg"
+                        alt="img">
+                </div>
+
+                                 <div class="gallery_item 1940s" data-caption="Poster advertising a talk by Harry Pollit and V.K. Krishna Menon on ‘India and World Struggle’, 28th October 1941. This poster compels its audience to “Strengthen the International Front Against Fascism”. Harry Pollit was a British communist who served as the General Secretary of the Communist Party of Great Britain (CPGB) from 1929 to 1939, and again from 1941 until his death in 1960. Throughout his time as leader of CPGB, he was in direct contact with Moscow as CPGB's “Code Holder” and was monitored by the British security services. V.K. Krishna Menon was an Indian academic and politician, and later served as Union Minister for Defence in Nehru’s cabinet. He led the overseas wing of the Indian independence movement, launching the India League in London where he aggressively campaigned to win public support for Indian independence within the UK. This talk was typical of events hosted by the Majlis in the interwar period. Years before, in 1936, Dr. Joseph Neesham, Señora de Hernando, and Reverend Leonard Schiff spoke about the situation in Spain and funds were collected to support Medical Aid in Spain. (Majlis Minutebook p. 207).">
+                    <img src="/digitizedarchives/world-struggle.jpg"
+                        alt="img">
+                </div>
+                                                 <div class="gallery_item 2020s" data-caption="Sara Saloo's Presidential Address 2021-22 (part one).">
+                    <img src="/digitizedarchives/2022presrec1.jpg"
+                        alt="img">
+                </div>
+                                                                                                  <div class="gallery_item 2020s" data-caption="Sara Saloo's Presidential Address 2021-22 (part two).">
+                    <img src="/digitizedarchives/2022presrec2.jpg"
+                        alt="img">
+                </div>
+
+            </div>
+
+            <!-- Lightbox -->
+            <div class="lightbox">
+                <div class="lightbox_wrapper">
+                    <div class="lightbox_content">
+                        <img src="" class="lightbox_img" alt="lightbox-img">
+                        <p class="caption"></p>
+                    </div>
+                </div>
+                <div class="lightbox_close">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        /*===== 01) Gallery Filtering functionality =====*/
+        const galleryTabs = document.querySelectorAll('.gallery_tabs li');
+        const galleryItems = document.querySelectorAll('.gallery_item');
+        const galleryImgs = document.querySelectorAll('.gallery_item img');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = document.querySelector('.lightbox_img');
+        const lightboxCloseBtn = document.querySelector('.lightbox_close');
+        galleryTabs.forEach((currTab) => {
+            currTab.addEventListener('click', (e) => {
+                e.target.parentElement.querySelector('.active').classList.remove('active');
+                e.target.classList.add('active');
+                let filterValue = e.target.getAttribute('data-filter');
+                galleryItems.forEach((currItem) => {
+                    if (filterValue === 'all' || currItem.classList.contains(filterValue)) {
+                        currItem.classList.remove('hide');
+                        currItem.classList.add('show');
+                    } else {
+                        currItem.classList.remove('show');
+                        currItem.classList.add('hide');
+                    }
+                });
+            });
+        });
+        /*===== 02) Lightbox functionality =====*/
+        galleryImgs.forEach((currImg, index) => {
+            currImg.addEventListener('click', (e) => {
+                let imgSrc = e.target.getAttribute('src');
+                let caption = galleryItems[index].getAttribute('data-caption');
+                lightboxImg.setAttribute('src', imgSrc);
+                lightbox.querySelector('.lightbox_content').innerHTML = `
+                    <img src="${imgSrc}" class="lightbox_img" alt="lightbox-img">
+                    <p class="caption">${caption}</p>
+                `;
+                lightbox.classList.add('open');
+                document.body.classList.add('overflow_hide');
+            });
+        });
+        lightboxCloseBtn.addEventListener('click', () => {
+            lightbox.classList.remove('open');
+            document.body.classList.remove('overflow_hide');
+        });
+        window.addEventListener('click', (e) => {
+            if (e.target.className === 'lightbox_wrapper') {
+                lightbox.classList.remove('open');
+                document.body.classList.remove('overflow_hide');
+            }
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('open');
+                document.body.classList.remove('overflow_hide');
+            }
+        });
+    </script>
+</body>
+</html>

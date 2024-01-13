@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Est. 1891, the Cambridge Majlis is a prestigious cultural and debating society that has hosted some of South Asia's greatest minds.">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logos/old-logo.ico" />
+    <title>Minutes - The Cambridge Majlis</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni&display=swap" rel="stylesheet" type="text/css">
+    <style>
+        .lead {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .container {
+            margin: 50px auto 0 auto;
+            max-width: 960px;
+        }
+
+        /*--====== Global Variables ======--*/
+        :root {
+            --bg-color: #e0e2fc;
+            --main-color: #d88721;
+            --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /*--====== CSS Reset ======--*/
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Libre Bodoni', serif;
+            background-color: #fdf9ee;
+            color: #000000;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /*--====== Gallery Section ======--*/
+        #gallery {
+            padding-top: 0rem;
+            padding-bottom: 2rem;
+        }
+
+        .container {
+            margin: 20px auto 20px auto;
+            max-width: 960px;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 0.5rem;
+            margin-bottom: 0px;
+            color: #a43725;
+        }
+
+        /* Filterable Gallery */
+        .gallery_tabs {
+            background-color: inherit;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            row-gap: 0.8rem;
+            padding: 0.8rem;
+            border-radius: 50px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .gallery_tabs li {
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery_tabs li.active,
+        .gallery_tabs li:hover {
+            background-color: var(--main-color);
+            color: #fff;
+        }
+
+        .gallery_wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery_wrapper {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+        }
+
+        .gallery_item {
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .gallery_item a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>The Cambridge Majlis Minutes</h1>
+    </div>
+    <div style="text-align: center; color: #a13b22;">
+        <p>Return <a href="/">home</a>.</p>
+        <br>
+        <p>To access our archives, click <a href="/archives">here</a>.</p>
+    </div>
+    <!--====== Gallery Section ======-->
+    <section id="gallery">
+        <div class="container">
+            <!-- Filterable Gallery -->
+            <ul class="gallery_tabs">
+                <li class="active" data-filter="all">All</li>
+                <li data-filter="2024">2024</li>
+                <li data-filter="2023">2023</li>
+            </ul>
+
+            <div class="gallery_wrapper">
+                <div class="gallery_item 2023">
+                    <a href="/minutes/mt8.pdf">MT 2023 - THBT The Diaspora Has a Duty To Engage in the Development of Their ...</a>
+                </div>
+                
+                <div class="gallery_item 2023">
+                    <a href="/minutes/mt7.pdf">MT 2023 - Teach In: Palestine & Kashmir</a>
+                </div>
+                
+                <div class="gallery_item 2023">
+                    <a href="/minutes/mt6.pdf">MT 2023 - Queer Panel</a>
+                </div>
+
+                <div class="gallery_item 2023">
+                    <a href="/minutes/mt5.pdf">MT 2023 - On Music & Dissent</a>
+                </div>
+
+                                <div class="gallery_item 2023">
+                    <a href="/minutes/mt4.5.pdf">MT 2023 - Pakistan Floods</a>
+                </div>
+
+                <div class="gallery_item 2023">
+                    <a href="/minutes/mt4.pdf">MT 2023 - Chai & Chat</a>
+                </div>
+
+                <div class="gallery_item 2023">
+                    <a href="/minutes/mt3.pdf">MT 2023 - TH Regrets the Decline of Communism in South Asia</a>
+                </div>
+
+                <div class="gallery_item 2023">
+                    <a href="/minutes/mt2.pdf">MT 2023 - Music & Mehendi</a>
+                </div>
+
+                <div class="gallery_item 2023">
+                    <a href="/minutes/mt1.pdf">MT 2023 - Hum Honge Kamyab: India Beyond Modi</a>
+                </div>
+
+                                <div class="gallery_item 2023">
+                    <a href="/minutes/et3.pdf">ET 2023 - Dr Shashi Tharoor</a>
+                </div>
+
+                                <div class="gallery_item 2023">
+                    <a href="/minutes/et2.pdf">ET 2023 - Miftah Ismail</a>
+                </div>
+
+                                <div class="gallery_item 2023">
+                    <a href="/minutes/et1.pdf">ET 2023 - Shahbaz Taseer</a>
+                </div>
+
+                <!-- Add more gallery items as needed -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        /* Filterable Gallery */
+        const galleryTabs = document.querySelectorAll('.gallery_tabs li');
+        const galleryItems = document.querySelectorAll('.gallery_item');
+
+        galleryTabs.forEach((currTab) => {
+            currTab.addEventListener('click', (e) => {
+                e.target.parentElement.querySelector('.active').classList.remove('active');
+                e.target.classList.add('active');
+                let filterValue = e.target.getAttribute('data-filter');
+                galleryItems.forEach((currItem) => {
+                    if (filterValue === 'all' || currItem.classList.contains(filterValue)) {
+                        currItem.style.display = 'block';
+                    } else {
+                        currItem.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
