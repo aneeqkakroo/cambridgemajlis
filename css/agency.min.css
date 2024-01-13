@@ -367,5 +367,15 @@ ul.social-buttons li a{
 }
 ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li a:hover{background-color:var(--main-color)}
 
+  /* Add this style to reduce the image size in the About section */
+  #who .img-fluid {
+    max-width: 80%; /* Adjust the percentage as needed */
+    height: auto;
+  }
 
+  /* Add this style to reduce the image size in the Get Involved section */
+  #news .img-fluid {
+    max-width: 80%; /* Adjust the percentage as needed */
+    height: auto;
+  }
 
