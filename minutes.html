@@ -215,7 +215,8 @@ galleryTabs.forEach((currTab) => {
         e.target.classList.add('active');
         let filterValue = e.target.getAttribute('data-filter');
         galleryItems.forEach((currItem) => {
-            if (filterValue === 'all' || currItem.classList.contains(filterValue)) {
+            // Compare the filterValue as a string
+            if (filterValue === 'all' || currItem.classList.contains(filterValue.toString())) {
                 currItem.classList.remove('hidden');
             } else {
                 currItem.classList.add('hidden');
@@ -223,6 +224,7 @@ galleryTabs.forEach((currTab) => {
         });
     });
 });
+
     </script>
 </body>
 
